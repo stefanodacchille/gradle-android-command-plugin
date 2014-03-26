@@ -16,5 +16,6 @@ public class AndroidCommandPlugin implements Plugin<Project> {
         extension.tasks 'monkey', Monkey, ['installDevice']
         extension.tasks 'clearPrefs', ClearPreferences
         extension.tasks 'uninstallDevice', Uninstall
+        extension.tasks 'push', Push
     }
 }

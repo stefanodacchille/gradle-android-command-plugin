@@ -77,7 +77,8 @@ android {
                 hudlDevices[0]
             }
         }
+
+        localFile '/resources/img.jpg'
+        remoteFile 'sdcard/Pictures/img.jpg'
     }
 }
-
-

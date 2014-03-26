@@ -9,6 +9,8 @@ public class AndroidCommandPluginExtension {
     def aapt
     def deviceId
     def events
+    def localFile
+    def remoteFile
 
     private final Project project
 
@@ -66,6 +68,14 @@ public class AndroidCommandPluginExtension {
     // prefer system property over direct setting to enable commandline arguments
     def getEvents() {
         System.properties['events'] ?: events ?: 10000
+    }
+
+    def getLocalFile() {
+        localFile
+    }
+
+    def getRemoteFile() {
+        remoteFile
     }
 
     def attachedDevices() {
