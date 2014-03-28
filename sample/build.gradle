@@ -1,3 +1,6 @@
+import static com.novoda.gradle.command.FileTransfer.Operation.PUSH
+import static com.novoda.gradle.command.FileTransfer.Operation.PULL
+
 buildscript {
     repositories {
         mavenCentral()
@@ -78,7 +81,12 @@ android {
             }
         }
 
-        localFile '/resources/img.jpg'
-        remoteFile 'sdcard/Pictures/img.jpg'
+        fileTransferOperation PUSH
+        localFile "${project.projectDir.path}/resources/img.jpg"
+        remoteFile '/sdcard/Pictures/img1.jpg'
+
+        fileTransferOperation PULL
+        remoteFile '/sdcard/Pictures/img1.jpg'
+        localFile "${project.projectDir.path}/resources/img1.jpg"
     }
 }
