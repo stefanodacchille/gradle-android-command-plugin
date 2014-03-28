@@ -4,19 +4,19 @@ import org.gradle.api.tasks.TaskAction
 
 class FileTransfer extends Adb {
 
-    protected getPushLocalFile() {
+    private getPushLocalFile() {
         pluginEx.pushLocalFile
     }
 
-    protected getPushRemoteFile() {
+    private getPushRemoteFile() {
         pluginEx.pushRemoteFile
     }
 
-    protected getPullLocalFile() {
+    private getPullLocalFile() {
         pluginEx.pullLocalFile
     }
 
-    protected getPullRemoteFile() {
+    private getPullRemoteFile() {
         pluginEx.pullRemoteFile
     }
 
