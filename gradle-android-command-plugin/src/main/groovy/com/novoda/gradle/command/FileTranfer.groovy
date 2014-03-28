@@ -4,34 +4,30 @@ import org.gradle.api.tasks.TaskAction
 
 class FileTransfer extends Adb {
 
-	protected getLocalFile() {
-        pluginEx.localFile
+    protected getPushLocalFile() {
+        pluginEx.pushLocalFile
     }
 
-	protected getRemoteFile() {
-        pluginEx.remoteFile
+    protected getPushRemoteFile() {
+        pluginEx.pushRemoteFile
     }
 
-	@TaskAction
+    protected getPullLocalFile() {
+        pluginEx.pullLocalFile
+    }
+
+    protected getPullRemoteFile() {
+        pluginEx.pullRemoteFile
+    }
+
+    @TaskAction
     void exec() {
-    	if (getLocalFile() == null || getRemoteFile() == null) {
-    		throw new NullPointerException();
-    	}
-    	
-    	switch(pluginEx.fileTransferOperation) {
-    		case FileTransfer.Operation.PULL:
-	    		runCommand(['pull', getRemoteFile(), getLocalFile()])
-	    		break
-    		case FileTransfer.Operation.PUSH:
-    			runCommand(['push', getLocalFile(), getRemoteFile()])
-    			break
-    		default:
-    			throw new UnsupportedOperationException()
-    	}
+        if (getPushLocalFile() != null && getPushRemoteFile() != null) {
+            runCommand(['push', getPushLocalFile(), getPushRemoteFile()])
+        }
+        if (getPullLocalFile() != null && getPullRemoteFile() != null) {
+            runCommand(['pull', getPullRemoteFile(), getPullLocalFile()])
+        }
         runCommand(['shell', 'am broadcast -a android.intent.action.MEDIA_MOUNTED -d file:///mnt/sdcard/'])
     }
-
-	public static enum Operation {
-		PUSH, PULL
-	}
 }

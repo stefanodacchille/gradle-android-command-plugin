@@ -9,9 +9,10 @@ public class AndroidCommandPluginExtension {
     def aapt
     def deviceId
     def events
-    String localFile
-    String remoteFile
-    FileTransfer.Operation fileTransferOperation
+    String pullLocalFile
+    String pullRemoteFile
+    String pushLocalFile
+    String pushRemoteFile
 
     private final Project project
 
