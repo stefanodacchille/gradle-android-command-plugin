@@ -49,7 +49,7 @@ apply plugin: 'android-command'
 Example
 =============================
 
-The plugin makes available new tasks `installDevice<Variant>`, `uninstallDevice<Variant>`, `run<Variant>`, `monkey<Variant>`, `clearPreferences<Variant>`.
+The plugin makes available new tasks `installDevice<Variant>`, `uninstallDevice<Variant>`, `run<Variant>`, `monkey<Variant>`, `clearPreferences<Variant>`, `fileTransfer<Variant>`.
 Just apply the plugin via
 
 ```groovy
@@ -72,6 +72,9 @@ android {
                 hudlDevices[0]
             }
         }
+        
+        [push|pull]LocalFileName 'S{project.projectDir.path}/resources/img.jpg'
+        [push|pull]RemoteFileName 'sdcard/Pictures/img.jpg'
     }
 }
 ```
