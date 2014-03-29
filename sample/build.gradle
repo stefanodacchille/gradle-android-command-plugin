@@ -78,10 +78,10 @@ android {
             }
         }
 
-        pushLocalFile "${project.projectDir.path}/resources/mh.jpg"
-        pushRemoteFile '/sdcard/Pictures/mh.jpg'
+        pushLocalFileName "${rootProject.projectDir.path}/resources/novoda.jpg"
+        pushRemoteFileName '/sdcard/Pictures/novoda.jpg'
 
-        pullRemoteFile '/sdcard/Pictures/mh.jpg'
-        pullLocalFile "${project.projectDir.path}/resources/img1.jpg"
+        pullRemoteFileName '/sdcard/Pictures/novoda.jpg'
+        pullLocalFileName "${rootProject.projectDir.path}/resources/novoda-copy.jpg"
     }
 }
