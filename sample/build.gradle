@@ -83,5 +83,15 @@ android {
 
         pullRemoteFileName '/sdcard/Pictures/novoda.jpg'
         pullLocalFileName "${rootProject.projectDir.path}/resources/novoda-copy.jpg"
+
+
+        tasks("pushProperties", com.novoda.gradle.command.Push) {
+            remote "/sdcard/test_push.properties"
+            local file("test.properties").absolutePath
+        }
+        tasks("pullProperties", com.novoda.gradle.command.Pull) {
+            remote "/sdcard/test.properties"
+            local file("test_pulled.properties").absolutePath
+        }
     }
 }
