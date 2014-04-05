@@ -86,8 +86,8 @@ android {
 
 
         tasks("pushProperties", com.novoda.gradle.command.Push) {
-            remote "/sdcard/test_push.properties"
-            local file("test.properties").absolutePath
+            remote "/sdcard/test.properties"
+            local file("test_push.properties").absolutePath
         }
         tasks("pullProperties", com.novoda.gradle.command.Pull) {
             remote "/sdcard/test.properties"
