@@ -6,7 +6,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.8.+'
+        classpath 'com.android.tools.build:gradle:0.9.+'
         // To depend on the deployed version of the plugin add the following line here:
         // classpath 'com.novoda:gradle-android-command-plugin:1.1.0-SNAPSHOT'
     }
@@ -35,22 +35,22 @@ android {
 
     productFlavors {
 
-        flavorGroups "pricing", "releaseType"
+        flavorDimensions "pricing", "releaseType"
 
         beta {
-            flavorGroup "releaseType"
+            flavorDimension "releaseType"
         }
 
         normal {
-            flavorGroup "releaseType"
+            flavorDimension "releaseType"
         }
 
         free {
-            flavorGroup "pricing"
+            flavorDimension "pricing"
         }
 
         paid {
-            flavorGroup "pricing"
+            flavorDimension "pricing"
         }
     }
 
@@ -83,5 +83,15 @@ android {
 
         pullRemoteFileName '/sdcard/Pictures/novoda.jpg'
         pullLocalFileName "${rootProject.projectDir.path}/resources/novoda-copy.jpg"
+
+
+        tasks("pushProperties", com.novoda.gradle.command.Push) {
+            remote "/sdcard/test.properties"
+            local file("test_push.properties").absolutePath
+        }
+        tasks("pullProperties", com.novoda.gradle.command.Pull) {
+            remote "/sdcard/test.properties"
+            local file("test_pulled.properties").absolutePath
+        }
     }
 }
